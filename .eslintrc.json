@@ -11,6 +11,7 @@
     "sourceType": "module"
   },
   "plugins": ["react"],
+  "root":true,
   "rules": {
     "max-len": ["warn", { "code": 100, "ignoreComments": true }],
     "react/react-in-jsx-scope": "off",

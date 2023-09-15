@@ -30,7 +30,9 @@ function ConfirmationPage() {
   return (
     <div>
       <h1>Confirmation Page</h1>
-      {confirmationInfo && <OrderConfirmation order={confirmationInfo} key={confirmationInfo.id}/>}
+      {confirmationInfo && (
+        <OrderConfirmation order={confirmationInfo} key={confirmationInfo.id} />
+      )}
     </div>
   );
 }

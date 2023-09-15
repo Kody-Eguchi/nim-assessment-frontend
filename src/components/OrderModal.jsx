@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import styles from "./styles/OrderModal.module.css";
 
-
 function OrderModal({ order, setOrderModal }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -11,16 +10,15 @@ function OrderModal({ order, setOrderModal }) {
 
   const navigate = useNavigate();
 
- 
-
-  const validatePhoneNumber  = (phoneNumber) => {
-    
+  const validatePhoneNumber = (phoneNumber) => {
     const cleanNumber = phoneNumber.replace(/\D/g, "");
 
-    
     // eslint-disable-next-line max-len
-    const formattedPhoneNumber = `(${cleanNumber.slice(0, 3)}) ${cleanNumber.slice(3, 6)}-${cleanNumber.slice(6, 10)}`;
-    
+    const formattedPhoneNumber = `(${cleanNumber.slice(
+      0,
+      3
+    )}) ${cleanNumber.slice(3, 6)}-${cleanNumber.slice(6, 10)}`;
+
     return formattedPhoneNumber;
   };
 
@@ -34,7 +32,7 @@ function OrderModal({ order, setOrderModal }) {
     if (!phone.trim()) {
       errors.push("Phone number is required");
     } else {
-      const validatedPhoneNumber = validatePhoneNumber (phone);
+      const validatedPhoneNumber = validatePhoneNumber(phone);
       setPhone(validatedPhoneNumber);
     }
 
@@ -51,14 +49,14 @@ function OrderModal({ order, setOrderModal }) {
       const response = await fetch("/api/orders", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           name,
           phone,
           address,
-          items: order,
-        }),
+          items: order
+        })
       });
 
       if (response.ok) {
